@@ -1,5 +1,6 @@
 const express = require('express');
 const {
+  getMonthlyPlan,
   getTourStats,
   aliasTopTours,
   getAllTours,
@@ -14,7 +15,8 @@ const router = express.Router();
 // router.param('id', checkId);
 
 router.route('/top-5-cheap').get(aliasTopTours, getAllTours);
-router.route('/tourStats').get(getTourStats);
+router.route('/tour-stats').get(getTourStats);
+router.route('/monthly-plan/:year').get(getMonthlyPlan);
 
 router.route('/').get(getAllTours).post(createNewTour);
 router.route('/:id').get(getTour).patch(updateTour).delete(deleteTour);
